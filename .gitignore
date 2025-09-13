@@ -5,7 +5,6 @@ target/
 !**/src/test/**/target/
 
 # Logs
-logs/
 *.log
 spring.log
 
