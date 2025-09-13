@@ -1,0 +1,67 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Logs
+logs/
+*.log
+spring.log
+
+# OS generated files
+*.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.idea/
+.vscode/
+.classpath
+.factorypath
+.project
+.settings/
+.apt_generated
+.springBeans
+.sts4-cache
+*.iws
+*.iml
+*.ipr
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Environment files
+.env
+.env.*
+
+# Database
+*.h2.db
+*.mv.db
+*.db
+
+# Compiled class files
+*.class
+
+# Others
+*.swp
+*.swo
+*.bak
+*.tmp
