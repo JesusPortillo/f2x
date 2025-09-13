@@ -60,4 +60,27 @@ class TransaccionServiceTest {
         assertEquals(new BigDecimal("150"), destino.getSaldo());
         assertEquals(transaccion, result);
     }
+
+    @Test
+    void crearTransaccion_transferencia_actualizaSaldosAmbasCuentas() {
+        Producto origen = new Producto();
+        origen.setId(1L);
+        origen.setSaldo(new BigDecimal("200"));
+        Producto destino = new Producto();
+        destino.setId(2L);
+        destino.setSaldo(new BigDecimal("50"));
+        Transaccion transferencia = new Transaccion();
+        transferencia.setTipo(Transaccion.TipoTransaccion.TRANSFERENCIA);
+        transferencia.setValor(new BigDecimal("75"));
+        transferencia.setProductoOrigen(origen);
+        transferencia.setProductoDestino(destino);
+        when(productoRepository.findById(1L)).thenReturn(Optional.of(origen));
+        when(productoRepository.findById(2L)).thenReturn(Optional.of(destino));
+        when(productoRepository.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
+        when(transaccionRepository.save(any())).thenReturn(transferencia);
+        Transaccion result = transaccionService.crearTransaccion(transferencia);
+        assertEquals(new BigDecimal("125"), origen.getSaldo(), "El saldo de la cuenta origen debe disminuir");
+        assertEquals(new BigDecimal("125"), destino.getSaldo(), "El saldo de la cuenta destino debe aumentar");
+        assertEquals(transferencia, result);
+    }
 }
